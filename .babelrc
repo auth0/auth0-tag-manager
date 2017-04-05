@@ -1,6 +1,6 @@
 {
   "presets": [["latest", { "modules": false }], "stage-2"],
-  "plugins": ["transform-export-extensions"],
+  "plugins": ["transform-export-extensions", "es6-promise"],
   "env": {
     "development": {
       "plugins": []

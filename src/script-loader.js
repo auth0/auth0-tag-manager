@@ -1,4 +1,3 @@
-import Promise from 'promiscuous';
 import logger from './logger';
 
 export default function loadScript({ src, globalName, globalNames, stubType, stubMethods, stub = null, window, document }, callback) {

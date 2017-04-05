@@ -27,9 +27,11 @@
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.0",
     "babel-loader": "^6.2.7",
+    "babel-plugin-es6-promise": "^1.1.1",
     "babel-plugin-transform-export-extensions": "^6.8.0",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
+    "case-sensitive-paths-webpack-plugin": "^2.0.0",
     "eslint": "^2.3.0",
     "eslint-config-airbnb": "^6.1.0",
     "http-server": "^0.9.0",
@@ -38,6 +40,6 @@
     "yaml-include-loader": "^1.0.0"
   },
   "dependencies": {
-    "promiscuous": "^0.7.0"
+    "es6-promise": "^4.1.0"
   }
 }

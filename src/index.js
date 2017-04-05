@@ -1,4 +1,3 @@
-import Promise from 'promiscuous';
 import config from '../config';
 import logger from './logger';
 import configureFacebookPixel from './facebook-pixel';
