@@ -1,6 +1,6 @@
 {
   "name": "auth0-metrics-tag-manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple tag manager for auth0-metrics",
   "main": "build/auth0-metrics-tag-manager.js",
   "scripts": {
