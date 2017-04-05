@@ -27,7 +27,7 @@ function handleEvent({ type, id, properties, label }) {
       hitType: 'event',
       eventCategory: properties.category || 'All',
       eventAction: id,
-      eventLabel: label
+      eventLabel: properties.label || label
     };
     return window.ga('send', gaEvent);
   }
