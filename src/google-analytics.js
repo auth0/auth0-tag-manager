@@ -15,22 +15,25 @@ export default function configureGoogleAnalitycs({ id, handlers, window, documen
   window.ga('create', id, 'auto');
 
   return promise;
-}
 
-function handleEvent({ type, id, properties, label }) {
-  if (type === 'page') {
-    return window.ga('send', 'pageview');
+  function handleEvent({ type, id: eventAction, properties, label }) {
+    const location = window.location || {};
+    if (type === 'page') {
+      return window.ga('send', 'pageview', {
+        page: `${location.pathname}${location.search}${location.hash}`
+      });
+    }
+
+    if (type === 'track') {
+      const gaEvent = {
+        hitType: 'event',
+        eventCategory: properties.category || 'All',
+        eventAction,
+        eventLabel: properties.label || label
+      };
+      return window.ga('send', gaEvent);
+    }
+
+    return null;
   }
-
-  if (type === 'track') {
-    const gaEvent = {
-      hitType: 'event',
-      eventCategory: properties.category || 'All',
-      eventAction: id,
-      eventLabel: properties.label || label
-    };
-    return window.ga('send', gaEvent);
-  }
-
-  return null;
 }
