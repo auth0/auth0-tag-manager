@@ -22,16 +22,6 @@ const config = {
       test: /\.js$/,
       use: 'babel-loader',
       include: [path.join(__dirname, '../../src')]
-    }, {
-      test: /\.json$/,
-      use: 'json-loader'
-    }, {
-      test: /\.yaml$/,
-      use: [{
-        loader: 'json-loader'
-      }, {
-        loader: 'yaml-include-loader'
-      }]
     }],
   },
 

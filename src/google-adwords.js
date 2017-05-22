@@ -1,10 +1,10 @@
 import loadScript from './script-loader.js';
 
-export default function configureGoogleAdWords({ id, mappings, handlers, window, document }) {
+export default function configureGoogleAdWords({ config, handlers, window, document }) {
   const src = 'https://www.googleadservices.com/pagead/conversion_async.js';
   const promise = loadScript({ src, globalName: 'google_trackConversion', stubType: 'function', window, document });
 
-  handlers.push(handleEvent.bind(null, id, mappings));
+  handlers.push(handleEvent.bind(null, config.id, config.mappings));
 
   return promise;
 }

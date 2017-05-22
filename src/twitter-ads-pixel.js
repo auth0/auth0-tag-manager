@@ -1,6 +1,6 @@
 import loadScript from './script-loader.js';
 
-export default function configureTwitterAdsPixel({ id, mappings, handlers, window, document }) {
+export default function configureTwitterAdsPixel({ config, handlers, window, document }) {
   const src = 'https://static.ads-twitter.com/uwt.js';
   const stub = function () {
     stub.exe ? stub.exe.apply(stub, arguments) : stub.queue.push(arguments);
@@ -11,8 +11,8 @@ export default function configureTwitterAdsPixel({ id, mappings, handlers, windo
 
   const promise = loadScript({ src, globalName: 'twq', stub, window, document });
 
-  handlers.push(handleEvent.bind(null, mappings));
-  window.twq('init', id);
+  handlers.push(handleEvent.bind(null, config.mappings));
+  window.twq('init', config.id);
 
   return promise;
 }

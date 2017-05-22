@@ -1,5 +1,6 @@
 import logger from './logger';
 import configureFacebookPixel from './facebook-pixel';
+import configureFacebookAnalytics from './facebook-analytics';
 import configureGoogleAnalitycs from './google-analytics';
 import configureTwitterAdsPixel from './twitter-ads-pixel';
 import configureGoogleAdWords from './google-adwords';
@@ -41,21 +42,36 @@ export function initialize(config, callback) {
           logger.error(error);
         }
       });
+    },
+    setUserId: (userId) => {
+      handlers.forEach((handler) => {
+        try {
+          handler({ type: 'setUserId', userId });
+        } catch (error) {
+          logger.error('Error on setUserId() handler');
+          logger.error(error);
+        }
+      });
     }
   };
 
-  if (config['facebook-pixel'] && config['facebook-pixel'].id) {
-    promises.push(configureFacebookPixel({ id: config['facebook-pixel'].id, handlers, window, document }));
+  if (config['facebook-pixel']) {
+    promises.push(configureFacebookPixel({ config: config['facebook-pixel'], handlers, window, document }));
   }
-  if (config['google-analytics'] && config['google-analytics'].id) {
-    promises.push(configureGoogleAnalitycs({ id: config['google-analytics'].id, handlers, window, document }));
+
+  if (config['facebook-analytics']) {
+    promises.push(configureFacebookAnalytics({ config: config['facebook-analytics'], handlers, window, document }));
   }
-  if (config['twitter-ads-pixel'] && config['twitter-ads-pixel'].id) {
-    promises.push(configureTwitterAdsPixel({ id: config['twitter-ads-pixel'].id, mappings: config['twitter-ads-pixel'].mappings, handlers, window, document }));
+
+  if (config['google-analytics']) {
+    promises.push(configureGoogleAnalitycs({ config: config['google-analytics'], handlers, window, document }));
+  }
+  if (config['twitter-ads-pixel']) {
+    promises.push(configureTwitterAdsPixel({ config: config['twitter-ads-pixel'], handlers, window, document }));
   }
   
-  if (config['google-adwords'] && config['google-adwords'].id) {
-    promises.push(configureGoogleAdWords({ id: config['google-adwords'].id, mappings: config['google-adwords'].mappings, handlers, window, document }));
+  if (config['google-adwords']) {
+    promises.push(configureGoogleAdWords({ config: config['google-adwords'], handlers, window, document }));
   }
 
   Promise.all(promises)

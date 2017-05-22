@@ -1,6 +1,6 @@
 import loadScript from './script-loader.js';
 
-export default function configureGoogleAnalitycs({ id, handlers, window, document }) {
+export default function configureGoogleAnalitycs({ config, handlers, window, document }) {
   const src = 'https://www.google-analytics.com/analytics.js';
   const stub = function () {
     stub.q.push(arguments);
@@ -12,7 +12,7 @@ export default function configureGoogleAnalitycs({ id, handlers, window, documen
   const promise = loadScript({ src, globalName: 'ga', stub, window, document });
 
   handlers.push(handleEvent);
-  window.ga('create', id, 'auto');
+  window.ga('create', congig.id, 'auto');
 
   return promise;
 
@@ -32,6 +32,10 @@ export default function configureGoogleAnalitycs({ id, handlers, window, documen
         eventLabel: properties.label || label
       };
       return window.ga('send', gaEvent);
+    }
+
+    if (type === 'setUserId') {
+      return window.ga('set', 'userId', id);
     }
 
     return null;

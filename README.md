@@ -23,6 +23,9 @@ var options = {
   'facebook-pixel': {
     id: 'YOUR_ID'
   },
+  'facebook-analytics': {
+    id: 'YOUR_ID'
+  },
   'twitter-ads-pixel': {
     id: 'YOUR_ID',
     mappings: [
