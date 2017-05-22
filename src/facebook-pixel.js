@@ -4,7 +4,7 @@ export default function configureFacebookPixel({ config, handlers, window, docum
 
   let promise;
 
-  if (config.load === false) {
+  if (config.preloaded !== true) {
     const src = 'https://connect.facebook.net/en_US/fbevents.js';
     const stub = function () {
       stub.callMethod ?
