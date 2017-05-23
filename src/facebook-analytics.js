@@ -20,7 +20,7 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
 
   const deferred = new Deferred();
   deferred.run(() => {
-    return typeof FB === 'object' && window.fbAsyncInit.hasRun;
+    return (typeof FB === 'object' && window.fbAsyncInit.hasRun);
   });
 
   handlers.push(handleEvent);
@@ -28,7 +28,6 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
   return promise || Promise.resolve();
 
   function handleEvent({ type, id, properties, userId }) {
-    const location = window.location || {};
     if (type === 'page') {
       return deferred.push(() => { FB.AppEvents.logPageView(); });
     }
@@ -38,7 +37,7 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
     }
 
     if (type === 'setUserId') {
-      return deferred.push(() => { console.log(id); FB.AppEvents.setUserID(userId); });
+      return deferred.push(() => { FB.AppEvents.setUserID(userId); });
     }
 
     return null;
