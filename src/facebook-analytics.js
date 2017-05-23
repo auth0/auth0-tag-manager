@@ -33,7 +33,7 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
     }
 
     if (type === 'track') {
-      return deferred.push(() => { FB.AppEvents.logEvent(id, properties); });
+      return deferred.push(() => { FB.AppEvents.logEvent(id, null, properties); });
     }
 
     if (type === 'setUserId') {
