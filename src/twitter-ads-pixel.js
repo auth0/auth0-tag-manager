@@ -1,9 +1,9 @@
 import loadScript from './script-loader.js';
 
 export default function configureTwitterAdsPixel({ config, handlers, window, document }) {
-  let promise;
+  let promise = Promise.resolve();
 
-  if (config.preloaded !== true) {
+  if (config.preloaded) {
     const src = 'https://static.ads-twitter.com/uwt.js';
     const stub = function () {
       stub.exe ? stub.exe.apply(stub, arguments) : stub.queue.push(arguments);
@@ -18,7 +18,7 @@ export default function configureTwitterAdsPixel({ config, handlers, window, doc
 
   handlers.push(handleEvent.bind(null, config.mappings));
 
-  return promise || Promise.resolve();
+  return promise;
 }
 
 function handleEvent(mappings, { type, id, properties }) {

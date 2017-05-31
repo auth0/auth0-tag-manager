@@ -5,13 +5,6 @@ import configureGoogleAnalitycs from './google-analytics';
 import configureTwitterAdsPixel from './twitter-ads-pixel';
 import configureGoogleAdWords from './google-adwords';
 
-function handleError(error, callback) {
-  if (callback) {
-    return callback(error);
-  }
-  return Promise.reject(error);
-}
-
 export function initialize(config, callback) {
   if (!config) {
     return handleError(new Error('config is required.'), callback);
@@ -85,6 +78,13 @@ export function initialize(config, callback) {
   ;
 
   return tagManager;
+}
+
+function handleError(error, callback) {
+  if (callback) {
+    return callback(error);
+  }
+  return Promise.reject(error);
 }
 
 export default initialize;

@@ -1,9 +1,9 @@
 import loadScript from './script-loader.js';
 
 export default function configureGoogleAnalitycs({ config, handlers, window, document }) {
-  let promise;
+  let promise = Promise.resolve();
 
-  if (config.preloaded !== true) {
+  if (config.preloaded) {
     const src = 'https://www.google-analytics.com/analytics.js';
     const stub = function () {
       stub.q.push(arguments);
@@ -18,7 +18,7 @@ export default function configureGoogleAnalitycs({ config, handlers, window, doc
 
   handlers.push(handleEvent);
 
-  return promise || Promise.resolve();
+  return promise;
 
   function handleEvent({ type, id: eventAction, properties, label }) {
     const location = window.location || {};

@@ -2,10 +2,9 @@ import loadScript from './script-loader.js';
 import Deferred from './defered';
 
 export default function configureFacebookAnalitycs({ config, handlers, window, document }) {
-  
-  let promise;
+  let promise = Promise.resolve();
 
-  if (config.preloaded !== true) {
+  if (!config.preloaded) {
     const src = 'https://connect.facebook.net/en_US/sdk.js';
     window.fbAsyncInit = function() {
       FB.init({
@@ -25,7 +24,7 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
 
   handlers.push(handleEvent);
 
-  return promise || Promise.resolve();
+  return promise;
 
   function handleEvent({ type, id, properties, userId }) {
     if (type === 'page') {

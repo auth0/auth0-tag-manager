@@ -1,10 +1,9 @@
 import loadScript from './script-loader.js';
 
 export default function configureFacebookPixel({ config, handlers, window, document }) {
+  let promise = Promise.resolve();
 
-  let promise;
-
-  if (config.preloaded !== true) {
+  if (!config.preloaded) {
     const src = 'https://connect.facebook.net/en_US/fbevents.js';
     const stub = function () {
       stub.callMethod ?
@@ -22,7 +21,7 @@ export default function configureFacebookPixel({ config, handlers, window, docum
   
   handlers.push(handleEvent);
 
-  return promise || Promise.resolve();
+  return promise;
 }
 
 function handleEvent({ type, id, properties }) {
