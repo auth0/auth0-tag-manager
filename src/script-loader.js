@@ -1,6 +1,6 @@
 import logger from './logger';
 
-export default function loadScript({ src, globalName, globalNames, stubType, stubMethods, stub = null, window, document }, callback) {
+export default function loadScript({ src, id, globalName, globalNames, stubType, stubMethods, stub = null, window, document }, callback) {
   const script = document.createElement('script');
   const first = document.getElementsByTagName('script')[0];
   const internalStub = stub || createStub(stubType, stubMethods);
@@ -13,6 +13,9 @@ export default function loadScript({ src, globalName, globalNames, stubType, stu
   script.async = true;
   script.src = src;
   script.type = 'text/javascript';
+  if (id) {
+    script.id = id;
+  }
 
   const promise = new Promise((resolve, reject) => {
     script.onerror = () => {

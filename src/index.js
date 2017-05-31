@@ -1,18 +1,25 @@
-import config from '../config';
 import logger from './logger';
 import configureFacebookPixel from './facebook-pixel';
+import configureFacebookAnalytics from './facebook-analytics';
 import configureGoogleAnalitycs from './google-analytics';
 import configureTwitterAdsPixel from './twitter-ads-pixel';
 import configureGoogleAdWords from './google-adwords';
 
-export function initialize(label = 'website', callback) {
+export function initialize(config, callback) {
+  if (!config) {
+    return handleError(new Error('config is required.'), callback);
+  }
+  if (!config.label) {
+    return handleError(new Error('config.label is required.'), callback);
+  }
+
   const promises = [];
   const handlers = [];
   const tagManager = {
     page: () => {
       handlers.forEach((handler) => {
         try {
-          handler({ type: 'page', label });
+          handler({ type: 'page', label: config.label });
         } catch (error) {
           logger.error('Error on page() handler');
           logger.error(error);
@@ -22,19 +29,43 @@ export function initialize(label = 'website', callback) {
     track: (id, properties = {}) => {
       handlers.forEach((handler) => {
         try {
-          handler({ type: 'track', id, properties, label });
+          handler({ type: 'track', id, properties, label: config.label });
         } catch (error) {
           logger.error('Error on page() handler');
+          logger.error(error);
+        }
+      });
+    },
+    setUserId: (userId) => {
+      handlers.forEach((handler) => {
+        try {
+          handler({ type: 'setUserId', userId });
+        } catch (error) {
+          logger.error('Error on setUserId() handler');
           logger.error(error);
         }
       });
     }
   };
 
-  promises.push(configureFacebookPixel({ id: config['facebook-pixel'].id, handlers, window, document }));
-  promises.push(configureGoogleAnalitycs({ id: config['google-analytics'].id, handlers, window, document }));
-  promises.push(configureTwitterAdsPixel({ id: config['twitter-ads-pixel'].id, mappings: config['twitter-ads-pixel'].mappings, handlers, window, document }));
-  promises.push(configureGoogleAdWords({ id: config['google-adwords'].id, mappings: config['google-adwords'].mappings, handlers, window, document }));
+  if (config['facebook-pixel']) {
+    promises.push(configureFacebookPixel({ config: config['facebook-pixel'], handlers, window, document }));
+  }
+
+  if (config['facebook-analytics']) {
+    promises.push(configureFacebookAnalytics({ config: config['facebook-analytics'], handlers, window, document }));
+  }
+
+  if (config['google-analytics']) {
+    promises.push(configureGoogleAnalitycs({ config: config['google-analytics'], handlers, window, document }));
+  }
+  if (config['twitter-ads-pixel']) {
+    promises.push(configureTwitterAdsPixel({ config: config['twitter-ads-pixel'], handlers, window, document }));
+  }
+  
+  if (config['google-adwords']) {
+    promises.push(configureGoogleAdWords({ config: config['google-adwords'], handlers, window, document }));
+  }
 
   Promise.all(promises)
     .then(() => {
@@ -42,12 +73,18 @@ export function initialize(label = 'website', callback) {
       return tagManager;
     })
     .catch((error) => {
-      if (callback) callback(error);
-      return Promise.reject(error);
+      return handleError(error, callback);
     })
   ;
 
   return tagManager;
+}
+
+function handleError(error, callback) {
+  if (callback) {
+    return callback(error);
+  }
+  return Promise.reject(error);
 }
 
 export default initialize;

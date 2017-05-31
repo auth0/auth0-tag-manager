@@ -1,18 +1,22 @@
 import loadScript from './script-loader.js';
 
-export default function configureTwitterAdsPixel({ id, mappings, handlers, window, document }) {
-  const src = 'https://static.ads-twitter.com/uwt.js';
-  const stub = function () {
-    stub.exe ? stub.exe.apply(stub, arguments) : stub.queue.push(arguments);
-  };
+export default function configureTwitterAdsPixel({ config, handlers, window, document }) {
+  let promise = Promise.resolve();
 
-  stub.version = '1.1';
-  stub.queue = [];
+  if (config.preloaded) {
+    const src = 'https://static.ads-twitter.com/uwt.js';
+    const stub = function () {
+      stub.exe ? stub.exe.apply(stub, arguments) : stub.queue.push(arguments);
+    };
 
-  const promise = loadScript({ src, globalName: 'twq', stub, window, document });
+    stub.version = '1.1';
+    stub.queue = [];
 
-  handlers.push(handleEvent.bind(null, mappings));
-  window.twq('init', id);
+    promise = loadScript({ src, globalName: 'twq', stub, window, document });
+    window.twq('init', config.id);
+  }
+
+  handlers.push(handleEvent.bind(null, config.mappings));
 
   return promise;
 }
