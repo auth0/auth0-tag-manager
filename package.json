@@ -4,9 +4,10 @@
   "description": "A simple tag manager by Auth0",
   "main": "build/auth0-metrics-tag-manager.js",
   "scripts": {
-    "build": "NODE_ENV=production webpack --config ./tools/webpack/webpack.config.babel.js",
-    "build:dev": "NODE_ENV=development webpack --config ./tools/webpack/webpack.config.babel.js",
-    "start": "NODE_ENV=development webpack --config ./tools/webpack/webpack.playground.config.babel.js && http-server ./tools/playground"
+    "build": "NODE_ENV=production ./tools/scripts/build.sh",
+    "build:dev": "NODE_ENV=development ./tools/scripts/build.sh",
+    "start": "NODE_ENV=development webpack --config ./tools/webpack/webpack.playground.config.babel.js && http-server ./tools/playground",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
