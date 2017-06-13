@@ -1,6 +1,9 @@
 pipeline {
     agent any
     tools { nodejs 'node-8.1.0' }
+    environment {
+        NODE_ENV = 'production'
+    }
     stages {
         stage('Checkout') {
           steps {
@@ -10,7 +13,7 @@ pipeline {
 
         stage('Installing dependencies') {
             steps {
-                sh 'yarn'
+                sh 'yarn install --production=false'
             }
         }
 
