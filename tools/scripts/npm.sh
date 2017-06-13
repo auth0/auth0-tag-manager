@@ -1,7 +1,5 @@
 #!/bin/bash
 
-yarn install
-
 MATCHER=${2:-"*"}
 NPM_TAG=${3:-"beta"}
 
