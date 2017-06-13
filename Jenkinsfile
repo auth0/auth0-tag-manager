@@ -18,6 +18,9 @@ pipeline {
         }
 
         stage('Build') { 
+            environment {
+                NPM_BIN = '$(npm bin)'
+            }
             steps {
                 sh '$NPM_BIN/webpack --config ./tools/webpack/webpack.config.babel.js'
             }
