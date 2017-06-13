@@ -42,7 +42,7 @@ pipeline {
 
       failure {
         slackSend channel: '#crew-solutions-build',
-                  color: 'error',
+                  color: 'danger',
                   message: "The pipeline ${currentBuild.fullDisplayName} has failed."
 
       }
