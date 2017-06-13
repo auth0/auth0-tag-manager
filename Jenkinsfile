@@ -14,12 +14,6 @@ pipeline {
             }
         }
 
-        // stage('Running tests') {
-        //   steps {
-        //     sh "npm run test:ci"
-        //   }
-        // }
-
         stage('Build') { 
             steps {
                 sh 'npm run build'
