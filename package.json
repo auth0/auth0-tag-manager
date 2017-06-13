@@ -6,8 +6,7 @@
   "scripts": {
     "build": "NODE_ENV=production webpack --config ./tools/webpack/webpack.config.babel.js",
     "build:dev": "NODE_ENV=development webpack --config ./tools/webpack/webpack.config.babel.js",
-    "start": "NODE_ENV=development webpack --config ./tools/webpack/webpack.playground.config.babel.js && http-server ./tools/playground",
-    "prepublish": "npm run build"
+    "start": "NODE_ENV=development webpack --config ./tools/webpack/webpack.playground.config.babel.js && http-server ./tools/playground"
   },
   "repository": {
     "type": "git",

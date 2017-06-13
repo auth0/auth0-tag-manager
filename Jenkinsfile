@@ -19,7 +19,7 @@ pipeline {
 
         stage('Build') { 
             steps {
-                sh 'npm run build'
+                sh '$NPM_BIN/webpack --config ./tools/webpack/webpack.config.babel.js'
             }
         }
 
