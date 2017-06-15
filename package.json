@@ -2,7 +2,7 @@
   "name": "auth0-metrics-tag-manager",
   "version": "2.0.0",
   "description": "A simple tag manager by Auth0",
-  "main": "build/auth0-metrics-tag-manager.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "NODE_ENV=production ./tools/scripts/build.sh",
     "build:dev": "NODE_ENV=development ./tools/scripts/build.sh",
@@ -23,15 +23,17 @@
   },
   "homepage": "https://github.com/auth0/auth0-metrics-tag-manager#readme",
   "devDependencies": {
-    "babel-cli": "^6.18.0",
+    "babel-cli": "^6.24.1",
     "babel-core": "^6.23.1",
     "babel-eslint": "^7.1.0",
-    "babel-loader": "^6.2.7",
+    "babel-loader": "7.0.0",
     "babel-plugin-es6-promise": "^1.1.1",
     "babel-plugin-transform-export-extensions": "^6.8.0",
+    "babel-preset-env": "^1.5.2",
     "babel-preset-latest": "^6.16.0",
     "babel-preset-stage-2": "^6.18.0",
     "case-sensitive-paths-webpack-plugin": "^2.0.0",
+    "es6-promise": "^4.1.0",
     "eslint": "^2.3.0",
     "eslint-config-airbnb": "^6.1.0",
     "eslint-plugin-react": "^4.3.0",
@@ -40,11 +42,9 @@
     "webpack": "^2.3.3",
     "webpack-node-externals": "^1.5.4"
   },
-  "dependencies": {
-    "es6-promise": "^4.1.0"
-  },
   "files": [
-    "build/auth0-metrics-tag-manager.js",
-    "build/auth0-metrics-tag-manager.js.map"
+    "build",
+    "src",
+    "yarn.lock"
   ]
 }

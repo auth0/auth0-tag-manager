@@ -20,8 +20,22 @@ const config = {
   module: {
     rules: [{
       test: /\.js$/,
-      use: 'babel-loader',
-      include: [path.join(__dirname, '../../src')]
+      include: [path.join(__dirname, '../../src')],
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [['latest', { modules: false }], 'stage-2'],
+          plugins: ['transform-export-extensions', 'es6-promise'],
+          env: {
+            development: {
+              plugins: []
+            },
+            test: {
+              plugins: ['transform-es2015-modules-commonjs']
+            }
+          }
+        }
+      }
     }],
   },
 
