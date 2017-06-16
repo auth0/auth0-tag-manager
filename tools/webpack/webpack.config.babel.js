@@ -11,10 +11,10 @@ const DEBUG = process.env.NODE_ENV === 'development';
 const config = {
   entry: path.join(__dirname, '../../src/index.js'),
   output: {
-    path: path.join(__dirname, '../../build'),
-    library: 'auth0MetricsTagManager',
+    path: path.join(__dirname, '../../build/'),
+    library: 'auth0TagManager',
     libraryTarget: 'umd',
-    filename: 'auth0-metrics-tag-manager.js'
+    filename: 'auth0-tag-manager.js'
   },
 
   module: {

@@ -1,5 +1,5 @@
 {
-  "name": "auth0-metrics-tag-manager",
+  "name": "auth0-tag-manager",
   "version": "2.0.0",
   "description": "A simple tag manager by Auth0",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/auth0/auth0-metrics-tag-manager.git"
+    "url": "git+https://github.com/auth0/auth0-tag-manager.git"
   },
   "keywords": [
     "tag",
@@ -19,9 +19,9 @@
   "author": "Alejo Fernandez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/auth0/auth0-metrics-tag-manager/issues"
+    "url": "https://github.com/auth0/auth0-tag-manager/issues"
   },
-  "homepage": "https://github.com/auth0/auth0-metrics-tag-manager#readme",
+  "homepage": "https://github.com/auth0/auth0-tag-manager#readme",
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.23.1",
