@@ -45,6 +45,7 @@
   "files": [
     "build",
     "src",
-    "yarn.lock"
+    "yarn.lock",
+    "es5.js"
   ]
 }
