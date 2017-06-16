@@ -1,6 +1,6 @@
 # Metrics Tag Manager
 
-A simple tag manager used by Auth0.
+A simple tag manager to proxy requests to 3rd party analytics libraries (Facebook, Twitter, Google)
 
 
 ## Configuration
