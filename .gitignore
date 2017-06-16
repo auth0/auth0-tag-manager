@@ -1,6 +1,8 @@
 # build dirs
 build
+lib
 tools/playground/build
+/es5.js
 
 # Logs
 logs

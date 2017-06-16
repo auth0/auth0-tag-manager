@@ -11,17 +11,31 @@ const DEBUG = process.env.NODE_ENV === 'development';
 const config = {
   entry: path.join(__dirname, '../../src/index.js'),
   output: {
-    path: path.join(__dirname, '../../build'),
-    library: 'auth0MetricsTagManager',
+    path: path.join(__dirname, '../../build/'),
+    library: 'auth0TagManager',
     libraryTarget: 'umd',
-    filename: 'auth0-metrics-tag-manager.js'
+    filename: 'auth0-tag-manager.js'
   },
 
   module: {
     rules: [{
       test: /\.js$/,
-      use: 'babel-loader',
-      include: [path.join(__dirname, '../../src')]
+      include: [path.join(__dirname, '../../src')],
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [['latest', { modules: false }], 'stage-2'],
+          plugins: ['transform-export-extensions', 'es6-promise'],
+          env: {
+            development: {
+              plugins: []
+            },
+            test: {
+              plugins: ['transform-es2015-modules-commonjs']
+            }
+          }
+        }
+      }
     }],
   },
 
