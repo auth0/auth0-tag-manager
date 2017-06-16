@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    tools { nodejs 'node-8.1.0' }
+    tools { nodejs 'node-v6.10.3' }
     environment {
         NODE_ENV = 'production'
     }
