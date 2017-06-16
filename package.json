@@ -1,6 +1,6 @@
 {
   "name": "auth0-tag-manager",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "A simple tag manager by Auth0",
   "main": "lib/index.js",
   "scripts": {
@@ -44,7 +44,7 @@
   },
   "files": [
     "build",
-    "src",
+    "lib",
     "yarn.lock",
     "es5.js"
   ]
