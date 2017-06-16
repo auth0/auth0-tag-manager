@@ -1,6 +1,6 @@
 # Metrics Tag Manager
 
-A simple tag manager used to replace Segment.io
+A simple tag manager used by Auth0.
 
 
 ## Configuration
