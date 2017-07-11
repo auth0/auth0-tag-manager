@@ -62,7 +62,7 @@ export function initialize(config, callback) {
   if (config['twitter-ads-pixel']) {
     promises.push(configureTwitterAdsPixel({ config: config['twitter-ads-pixel'], handlers, window, document }));
   }
-  
+
   if (config['google-adwords']) {
     promises.push(configureGoogleAdWords({ config: config['google-adwords'], handlers, window, document }));
   }
@@ -72,10 +72,7 @@ export function initialize(config, callback) {
       if (callback) callback(null, tagManager);
       return tagManager;
     })
-    .catch((error) => {
-      return handleError(error, callback);
-    })
-  ;
+    .catch((error) => handleError(error, callback));
 
   return tagManager;
 }

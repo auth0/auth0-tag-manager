@@ -1,3 +1,4 @@
+/* global FB */
 import loadScript from './script-loader.js';
 import Deferred from './defered';
 
@@ -6,11 +7,11 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
 
   if (!config.preloaded) {
     const src = 'https://connect.facebook.net/en_US/sdk.js';
-    window.fbAsyncInit = function() {
+    window.fbAsyncInit = function () {
       FB.init({
-        appId      : config.id,
-        xfbml      : true,
-        version    : 'v2.8'
+        appId: config.id,
+        xfbml: true,
+        version: 'v2.8'
       });
     };
 
@@ -18,9 +19,7 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
   }
 
   const deferred = new Deferred();
-  deferred.run(() => {
-    return (typeof FB === 'object' && window.fbAsyncInit.hasRun);
-  });
+  deferred.run(() => (typeof FB === 'object' && window.fbAsyncInit.hasRun));
 
   handlers.push(handleEvent);
 
@@ -35,7 +34,7 @@ export default function configureFacebookAnalitycs({ config, handlers, window, d
       return deferred.push(() => { FB.AppEvents.logEvent(id, null, properties); });
     }
 
-    if (type === 'setUserId') {
+    if (type === 'setUserId' && userId) {
       return deferred.push(() => { FB.AppEvents.setUserID(userId); });
     }
 
