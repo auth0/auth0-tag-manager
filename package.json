@@ -1,6 +1,6 @@
 {
   "name": "auth0-tag-manager",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "A simple tag manager by Auth0",
   "main": "lib/index.js",
   "scripts": {
