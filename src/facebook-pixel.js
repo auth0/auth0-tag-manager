@@ -18,7 +18,7 @@ export default function configureFacebookPixel({ config, handlers, window, docum
 
     window.fbq('init', config.id);
   }
-  
+
   handlers.push(handleEvent);
 
   return promise;
@@ -33,7 +33,7 @@ function handleEvent({ type, id, properties }) {
     return window.fbq('trackCustom', id, properties);
   }
 
-  // TODO: Facebook Pixel does not yet support Setting the 
+  // TODO: Facebook Pixel does not yet support Setting the
   // UserId like Facebook SDK does.
 
   return null;

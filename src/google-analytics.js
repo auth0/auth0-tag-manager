@@ -13,14 +13,14 @@ export default function configureGoogleAnalitycs({ config, handlers, window, doc
     window.GoogleAnalyticsObject = 'ga';
 
     promise = loadScript({ src, globalName: 'ga', stub, window, document });
-    window.ga('create', congig.id, 'auto');
+    window.ga('create', config.id, 'auto');
   }
 
   handlers.push(handleEvent);
 
   return promise;
 
-  function handleEvent({ type, id: eventAction, properties, label }) {
+  function handleEvent({ type, id: eventAction, properties, label, userId }) {
     const location = window.location || {};
     if (type === 'page') {
       return window.ga('send', 'pageview', {
@@ -38,8 +38,8 @@ export default function configureGoogleAnalitycs({ config, handlers, window, doc
       return window.ga('send', gaEvent);
     }
 
-    if (type === 'setUserId') {
-      return window.ga('set', 'userId', id);
+    if (type === 'setUserId' && userId) {
+      return window.ga('set', 'userId', userId);
     }
 
     return null;
