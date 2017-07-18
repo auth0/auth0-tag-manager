@@ -43,5 +43,5 @@ var options = {
 
 [circleci-image]: https://img.shields.io/circleci/project/github/auth0/auth0-tag-manager.svg?style=flat-square
 [circleci-url]: https://circleci.com/gh/auth0/auth0-tag-manager/tree/master
-[license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
+[license-image]: http://img.shields.io/npm/l/auth0-tag-manager.svg?style=flat-square
 [license-url]: #license
