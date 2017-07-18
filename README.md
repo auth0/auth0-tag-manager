@@ -1,3 +1,6 @@
+[![Build status][circleci-image]][circleci-url]
+[![License][license-image]][license-url]
+
 # Metrics Tag Manager
 
 A simple tag manager to proxy requests to 3rd party analytics libraries (Facebook, Twitter, Google)
@@ -37,3 +40,8 @@ var options = {
   }
 }
 ```
+
+[circleci-image]: https://img.shields.io/circleci/project/github/auth0/auth0-tag-manager.svg?style=flat-square
+[circleci-url]: https://circleci.com/gh/auth0/auth0-tag-manager/tree/master
+[license-image]: http://img.shields.io/npm/l/auth0-lock.svg?style=flat-square
+[license-url]: #license
