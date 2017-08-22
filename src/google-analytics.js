@@ -3,7 +3,7 @@ import loadScript from './script-loader.js';
 export default function configureGoogleAnalitycs({ config, handlers, window, document }) {
   let promise = Promise.resolve();
 
-  if (config.preloaded) {
+  if (!config.preloaded) {
     const src = 'https://www.google-analytics.com/analytics.js';
     const stub = function () {
       stub.q.push(arguments);
