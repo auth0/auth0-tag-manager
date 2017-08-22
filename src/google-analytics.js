@@ -1,6 +1,6 @@
 import loadScript from './script-loader.js';
 
-export default function configureGoogleAnalitycs({ config, handlers, window, document }) {
+export default function configureGoogleAnalytics({ config, handlers, window, document }) {
   let promise = Promise.resolve();
 
   if (config.preloaded) {
