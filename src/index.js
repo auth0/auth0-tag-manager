@@ -58,7 +58,7 @@ export function initialize(config, callback) {
   }
 
   if (config['google-analytics']) {
-    promises.push(configureGoogleAnalitycs({ config: config['google-analytics'], handlers, window, document }));
+    promises.push(configureGoogleAnalytics({ config: config['google-analytics'], handlers, window, document }));
   }
 
   if (config['google-tag-manager']) {
