@@ -3,7 +3,7 @@ import loadScript from './script-loader.js';
 export default function configureGoogleAdWords({ config, handlers, window, document }) {
   let promise = Promise.resolve();
 
-  if (config.preloaded) {
+  if (!config.preloaded) {
     const src = 'https://www.googleadservices.com/pagead/conversion_async.js';
     promise = loadScript({ src, globalName: 'google_trackConversion', stubType: 'function', window, document });
   }

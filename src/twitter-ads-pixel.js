@@ -3,7 +3,7 @@ import loadScript from './script-loader.js';
 export default function configureTwitterAdsPixel({ config, handlers, window, document }) {
   let promise = Promise.resolve();
 
-  if (config.preloaded) {
+  if (!config.preloaded) {
     const src = 'https://static.ads-twitter.com/uwt.js';
     const stub = function () {
       stub.exe ? stub.exe.apply(stub, arguments) : stub.queue.push(arguments);
