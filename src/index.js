@@ -1,7 +1,7 @@
 import logger from './logger';
 import configureFacebookPixel from './facebook-pixel';
 import configureFacebookAnalytics from './facebook-analytics';
-import configureGoogleAnalitycs from './google-analytics';
+import configureGoogleAnalytics from './google-analytics';
 import configureTwitterAdsPixel from './twitter-ads-pixel';
 import configureGoogleAdWords from './google-adwords';
 
@@ -57,8 +57,9 @@ export function initialize(config, callback) {
   }
 
   if (config['google-analytics']) {
-    promises.push(configureGoogleAnalitycs({ config: config['google-analytics'], handlers, window, document }));
+    promises.push(configureGoogleAnalytics({ config: config['google-analytics'], handlers, window, document }));
   }
+
   if (config['twitter-ads-pixel']) {
     promises.push(configureTwitterAdsPixel({ config: config['twitter-ads-pixel'], handlers, window, document }));
   }
