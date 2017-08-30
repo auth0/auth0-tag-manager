@@ -2,6 +2,7 @@ import logger from './logger';
 import configureFacebookPixel from './facebook-pixel';
 import configureFacebookAnalytics from './facebook-analytics';
 import configureGoogleAnalytics from './google-analytics';
+import configureGoogleTagManager from './google-tag-manager';
 import configureTwitterAdsPixel from './twitter-ads-pixel';
 import configureGoogleAdWords from './google-adwords';
 
@@ -58,6 +59,10 @@ export function initialize(config, callback) {
 
   if (config['google-analytics']) {
     promises.push(configureGoogleAnalytics({ config: config['google-analytics'], handlers, window, document }));
+  }
+
+  if (config['google-tag-manager']) {
+    promises.push(configureGoogleTagManager({ config: config['google-tag-manager'], handlers, window, document }));
   }
 
   if (config['twitter-ads-pixel']) {
