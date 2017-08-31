@@ -2,7 +2,7 @@
 import loadScript from './script-loader.js';
 import Deferred from './defered';
 
-export default function configureFacebookAnalitycs({ config, handlers, window, document }) {
+export default function configureFacebookAnalytics({ config, handlers, window, document }) {
   let promise = Promise.resolve();
 
   if (!config.preloaded) {
