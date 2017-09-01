@@ -7,7 +7,10 @@
     "build": "NODE_ENV=production ./tools/scripts/build.sh",
     "build:dev": "NODE_ENV=development ./tools/scripts/build.sh",
     "start": "NODE_ENV=development webpack --config ./tools/webpack/webpack.playground.config.babel.js && http-server ./tools/playground",
-    "test": "jest"
+    "test": "jest --ci",
+    "test:development": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
   },
   "repository": {
     "type": "git",
@@ -50,5 +53,11 @@
     "yarn.lock",
     "es5.js"
   ],
-  "dependencies": {}
+  "dependencies": {},
+  "jest": {
+    "globals": {
+      "window": true,
+      "document": true
+    }
+  }
 }

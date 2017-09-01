@@ -7,6 +7,7 @@ export default function configureFacebookAnalytics({ config, handlers, window, d
 
   if (!config.preloaded) {
     const src = 'https://connect.facebook.net/en_US/sdk.js';
+
     window.fbAsyncInit = function () {
       FB.init({
         appId: config.id,
