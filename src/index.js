@@ -27,11 +27,10 @@ export function initialize(config, callback) {
         }
       });
     },
-    track: (id, properties = {}, trackCallback) => {
+    track: (id, properties = {}) => {
       handlers.forEach((handler) => {
         try {
           handler({ type: 'track', id, properties, label: config.label });
-          trackCallback(config.label);
         } catch (error) {
           logger.error('Error on page() handler');
           logger.error(error);
