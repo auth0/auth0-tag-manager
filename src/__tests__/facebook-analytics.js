@@ -23,7 +23,20 @@ it('handles the event', () => {
 
   manager.track('test_event');
 
-  expect(items.length).toBe(1);
+  expect(items).toHaveLength(1);
+
+  manager.page();
+  
+  expect(items).toHaveLength(2);
+
+  manager.setUserId('abc123');
+  
+  expect(items).toHaveLength(3);
+
+
+  // If no user is is passed the event should not fire.
+  manager.setUserId()
+  expect(items).toHaveLength(3);
 });
 
 it('loads in facebook analytics', () => {
