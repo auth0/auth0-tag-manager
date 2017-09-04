@@ -19,7 +19,7 @@ it('throws when no config.label is passed', () => {
   });
 });
 
-it('doesn\'t call the callback if config is correct', () => {
+it('doesn\'t call the callback if config is correct and there are no tags', () => {
   const callback = jest.fn();
   TagManager({ label: 'Something' }, callback);
 
