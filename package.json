@@ -59,6 +59,7 @@
       "window": true,
       "document": true
     },
-    "coverageReporters": ["text", "html"]
+    "coverageReporters": ["text", "html"],
+    "autoMock": false
   }
 }
