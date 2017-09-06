@@ -21,7 +21,6 @@ it('handles the "track" event', () => {
 
 it('handles the "page" event', () => {
   const TagManager = require('../').default;
-  const eventName = 'test_event';
   const manager = TagManager({
     label: 'Something',
     'facebook-pixel': {

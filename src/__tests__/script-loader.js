@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+
 describe('loadScript tests', () => {
   beforeEach(() => {
     // Remove <script> tags before the tests

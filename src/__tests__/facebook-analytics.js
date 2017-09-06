@@ -7,7 +7,7 @@ it('handles the event', () => {
   const deferred = require('../defered');
   const items = [];
 
-  deferred.default = jest.fn(function() {
+  deferred.default = jest.fn(function () {
     this.push = i => {
       items.push(i);
     };
