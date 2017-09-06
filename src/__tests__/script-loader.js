@@ -1,15 +1,13 @@
 
 describe('loadScript tests', () => {
   beforeEach(() => {
-    // Create <script> element for the loadScript, <script> count is 1
-    document.body.appendChild(document.createElement('script'));    
-  });
-
-  afterEach(() => {
-    // Remove <script> tags after the test
+    // Remove <script> tags before the tests
     document.querySelectorAll('script').forEach((tag) => {
       tag.parentNode.removeChild(tag);
     });
+
+    // Create <script> element for the loadScript, <script> count is 1
+    document.body.appendChild(document.createElement('script'));    
   });
 
   it('loads a script from a URL', () => {
@@ -31,6 +29,7 @@ describe('loadScript tests', () => {
     // A <script id="test" /> should exist
     expect(document.querySelector('script#test')).not.toBeUndefined();
     
+    // globalName should exist
     expect(jQuery).not.toBeUndefined();    
     expect(jQuery()).toEqual('abc123');    
   });
@@ -55,9 +54,15 @@ describe('loadScript tests', () => {
     // A <script id="test" /> should exist
     expect(document.querySelector('script#test')).not.toBeUndefined();
     
+    
+    // globalName should exist
     expect(jQuery).not.toBeUndefined();
+    
+    // stubMethods should exist
     expect(jQuery.foo).not.toBeUndefined();
+    expect(typeof jQuery.foo).toEqual('function');
     expect(jQuery.bar).not.toBeUndefined();
+    expect(typeof jQuery.bar).toEqual('function');
   });
   
   it('errors on invalid URL', (done) => {

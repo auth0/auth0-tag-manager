@@ -7,7 +7,7 @@
     "build": "NODE_ENV=production ./tools/scripts/build.sh",
     "build:dev": "NODE_ENV=development ./tools/scripts/build.sh",
     "start": "NODE_ENV=development webpack --config ./tools/webpack/webpack.playground.config.babel.js && http-server ./tools/playground",
-    "test": "jest --ci",
+    "test": "jest --ci --verbose",
     "test:development": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage"
