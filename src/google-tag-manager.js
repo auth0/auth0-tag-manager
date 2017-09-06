@@ -6,7 +6,7 @@ export default function configureGoogleTagManager({ config, handlers, window, do
   if (!config.preloaded) {
     const src = 'https://www.googletagmanager.com/gtm.js?id=' + config.id;
     const stub = window.dataLayer || [];
-    stub.push({ 'gtm.start': new Date().getTime(), event:'gtm.js' });
+    stub.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
     promise = loadScript({ src, globalName: 'dataLayer', stub, window, document });
   }
 
@@ -39,5 +39,4 @@ export default function configureGoogleTagManager({ config, handlers, window, do
 
     return null;
   }
-
 }
