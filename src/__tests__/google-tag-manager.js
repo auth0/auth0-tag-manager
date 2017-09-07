@@ -2,10 +2,9 @@
 
 import { expectLoadScriptToBeCalled } from '../test-utils';
 
-
 it('handles the "track" event', () => {
   const TagManager = require('../').default;
-  
+
   const label = 'Something';
   const eventName = 'test_event';
   const manager = TagManager({
@@ -14,20 +13,20 @@ it('handles the "track" event', () => {
       preloaded: true
     }
   });
-  
+
   window.dataLayer = { push: jest.fn() };
 
   manager.track(eventName);
   expect(window.dataLayer.push).toHaveBeenCalledWith({
     event: eventName,
-    eventCategory: "All",
+    eventCategory: 'All',
     eventLabel: label
   });
 });
 
 it('handles the "page" event', () => {
   const TagManager = require('../').default;
-  
+
   const label = 'Something';
   const manager = TagManager({
     label,
@@ -35,19 +34,19 @@ it('handles the "page" event', () => {
       preloaded: true
     }
   });
-  
+
   window.dataLayer = { push: jest.fn() };
 
   manager.page();
   expect(window.dataLayer.push).toHaveBeenCalledWith({
-    event: "pageview",
-    page: "blank"
+    event: 'pageview',
+    page: 'blank'
   });
 });
 
 it('handles the "setUserId" event', () => {
   const TagManager = require('../').default;
-  
+
   const label = 'Something';
   const userId = 'abc123';
   const manager = TagManager({
@@ -56,7 +55,7 @@ it('handles the "setUserId" event', () => {
       preloaded: true
     }
   });
-  
+
   window.dataLayer = { push: jest.fn() };
 
   manager.setUserId(userId);

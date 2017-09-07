@@ -8,18 +8,18 @@ const errors = {
 };
 
 it('throws when no config is passed', () => {
-  TagManager(null, (error) => {
+  TagManager(null, error => {
     expect(error.message).toEqual(errors.noConfig);
   });
 });
 
 it('throws when no config.label is passed', () => {
-  TagManager({}, (error) => {
+  TagManager({}, error => {
     expect(error.message).toEqual(errors.noConfigLabel);
   });
 });
 
-it('doesn\'t call the callback if config is correct and there are no tags', () => {
+it("doesn't call the callback if config is correct and there are no tags", () => {
   const callback = jest.fn();
   TagManager({ label: 'Something' }, callback);
 
@@ -36,4 +36,3 @@ it('exposes page(), track() and setUserId()', () => {
   expect(typeof manager.track).toEqual('function');
   expect(typeof manager.setUserId).toEqual('function');
 });
-

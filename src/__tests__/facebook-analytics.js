@@ -6,15 +6,15 @@ it('handles the event', () => {
   const configureFacebookAnalytics = require('../facebook-analytics').default;
   const deferred = require('../defered');
   const items = [];
-  
+
   deferred.default = jest.fn(function () {
-    this.push = (i) => {
+    this.push = i => {
       items.push(i);
     };
-    
-    this.run = (fn) => {};
+
+    this.run = fn => {};
   });
-  
+
   const TagManager = require('../').default;
   const manager = TagManager({
     label: 'Something',
@@ -26,16 +26,15 @@ it('handles the event', () => {
   expect(items).toHaveLength(1);
 
   manager.page();
-  
+
   expect(items).toHaveLength(2);
 
   manager.setUserId('abc123');
-  
+
   expect(items).toHaveLength(3);
 
-
   // If no user is is passed the event should not fire.
-  manager.setUserId()
+  manager.setUserId();
   expect(items).toHaveLength(3);
 });
 
@@ -57,5 +56,3 @@ it('calls configureFacebookAnalytics when config is set', () => {
 
   expect(configureFacebookAnalytics.default).toBeCalled();
 });
-
-

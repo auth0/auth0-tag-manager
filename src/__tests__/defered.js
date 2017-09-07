@@ -6,7 +6,7 @@ it('queues functions when is not ready', () => {
   const def = new Deferred();
   const fun1 = jest.fn();
   const fun2 = jest.fn();
-  
+
   def.push(fun1);
   def.push(fun2);
 
@@ -20,7 +20,7 @@ it('executes functions when is ready', () => {
   const fun2 = jest.fn();
 
   def.run(() => true);
-  
+
   def.push(fun1);
   def.push(fun2);
 
@@ -35,14 +35,14 @@ it('executes queued functions on run', () => {
 
   def.push(fun1);
   def.push(fun2);
-  
+
   def.run(() => true);
-  
+
   expect(fun1).toBeCalled();
   expect(fun2).toBeCalled();
 });
 
-it('waits and sets a timeout for run() if it\'s not ready', () => {
+it("waits and sets a timeout for run() if it's not ready", () => {
   const def = new Deferred();
 
   expect(def.timeout).toBeUndefined();

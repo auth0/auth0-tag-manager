@@ -9,17 +9,19 @@ it('handles the "track" event', () => {
     label: 'Something',
     'twitter-ads-pixel': {
       preloaded: true,
-      mappings: [{
-        evt: eventName,
-        pid: eventName
-      }]
+      mappings: [
+        {
+          evt: eventName,
+          pid: eventName
+        }
+      ]
     }
   });
-  
+
   window.twttr = { conversion: { trackPid: jest.fn() } };
-  
+
   manager.track(eventName);
-  
+
   expect(window.twttr.conversion.trackPid).toBeCalledWith(eventName, {});
 });
 
@@ -30,17 +32,19 @@ it('handles the "page" event', () => {
     label: 'Something',
     'twitter-ads-pixel': {
       preloaded: true,
-      mappings: [{
-        evt: eventName,
-        pid: eventName
-      }]
+      mappings: [
+        {
+          evt: eventName,
+          pid: eventName
+        }
+      ]
     }
   });
-  
+
   window.twq = jest.fn();
-  
+
   manager.page();
-  
+
   expect(window.twq).toBeCalledWith('track', 'PageView');
 });
 
@@ -51,7 +55,7 @@ it('loads in twitter ads pixel', () => {
   window.twq = jest.fn();
 
   expectLoadScriptToBeCalled(configureTwitterAdsPixel);
-}); 
+});
 
 it('calls configureTwitterAdsPixel when config is set', () => {
   const configureTwitterAdsPixel = require('../twitter-ads-pixel');
