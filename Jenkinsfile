@@ -24,6 +24,9 @@ pipeline {
         }
 
         stage('Publish to NPM') {
+            when {
+              branch 'master'
+            }
             steps {
                 sh 'tools/scripts/npm.sh'
             }
