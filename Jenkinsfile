@@ -1,6 +1,8 @@
 pipeline {
-    agent any
-    tools { nodejs 'node-v6.10.3' }
+    agent {
+        label 'crew-apollo'
+    }
+    tools { nodejs '6.10.3' }
     environment {
         NODE_ENV = 'production'
     }
@@ -28,7 +30,12 @@ pipeline {
               branch 'master'
             }
             steps {
-                sh 'tools/scripts/npm.sh'
+              withCredentials([string(credentialsId: 'auth0npm-npm-token', variable: 'NPM_TOKEN')]) {
+                sh '''
+                  echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > .npmrc
+                  tools/scripts/npm.sh
+                '''
+              }
             }
         }
     }
